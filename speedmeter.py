@@ -3,7 +3,7 @@ import wiringpi
 import time
 
 # Sleep time
-ST = 0.01
+ST = 0.05
 
 # Wheel size
 WS = 26.0
