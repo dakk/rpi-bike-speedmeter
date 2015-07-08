@@ -63,5 +63,5 @@ while True:
 	cs = 0
 
 	f = open ('v.txt', 'w')
-	f.write (kmh)
+	f.write (str (kmh))
 	f.close ()
