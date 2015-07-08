@@ -6,7 +6,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import urlparse
 
 # HTTP Port
-PORT = 6060
+PORT = 6061
 
 # Sleep time
 ST = 0.05
