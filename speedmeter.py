@@ -39,7 +39,7 @@ class GetHandler(BaseHTTPRequestHandler):
 		return
 
 def serveJob ():
-	server = HTTPServer(('localhost', PORT), GetHandler)
+	server = HTTPServer(('', PORT), GetHandler)
 	print 'Starting server, use <Ctrl-C> to stop'
 	server.serve_forever()
 
