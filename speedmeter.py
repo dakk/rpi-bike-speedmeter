@@ -1,6 +1,12 @@
 #!/usr/bin/python2
 import wiringpi
 import time
+from threading import Thread
+from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
+import urlparse
+
+# HTTP Port
+PORT = 6060
 
 # Sleep time
 ST = 0.05
@@ -23,6 +29,24 @@ rpm = 0
 kmm = 0
 kmh = 0
 
+
+# HTTP JOB
+class GetHandler(BaseHTTPRequestHandler):
+	def do_GET(self):
+		self.send_response(200)
+		self.end_headers()
+		self.wfile.write(str (kmh))
+		return
+
+def serveJob ():
+	server = HTTPServer(('localhost', PORT), GetHandler)
+	print 'Starting server, use <Ctrl-C> to stop'
+	server.serve_forever()
+
+t = Thread(target=serveJob, args=())
+t.start()
+
+
 while True:
 	while cs < 1/ST:
 		time.sleep (ST)
@@ -37,3 +61,7 @@ while True:
 
 	rounds = 0
 	cs = 0
+
+	f = open ('v.txt', 'w')
+	f.write (kmh)
+	f.close ()
