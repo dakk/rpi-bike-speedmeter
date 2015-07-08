@@ -15,6 +15,7 @@ wiringpi.wiringPiSetupGpio()
 wiringpi.pinMode(17, 1)
 cs = 0
 rounds = 0
+rpm = 0
 
 while True:
 	while cs < 1/ST:
