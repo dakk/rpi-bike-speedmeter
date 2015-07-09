@@ -9,7 +9,7 @@ import urlparse
 PORT = 6061
 
 # Sleep time
-ST = 0.05
+ST = 0.01
 
 # Wheel radius (mm)
 WR = 260.0
@@ -28,6 +28,8 @@ rounds = 0
 rpm = 0
 kmm = 0
 kmh = 0
+
+pstate = 0
 
 
 # HTTP JOB
@@ -52,7 +54,10 @@ while True:
 		time.sleep (ST)
 		v = wiringpi.digitalRead(17)
 		cs += 1
-		rounds += int (v)
+
+		if pstate == 1 and int(v) == 0:
+			rounds += 1
+		pstate = int (v)
 
 	rpm = (rpm + (rounds * 60)) / 2
 	kmm = rpm * CFK
