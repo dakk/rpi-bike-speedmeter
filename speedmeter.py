@@ -15,8 +15,8 @@ ST = 0.01
 WR = 180.0
 
 # Circonference 2 * pi * r (m) and (km)
-CF = (2 * 3.14 * WR) / 1000.0
-CFK = CF / 1000.0
+CF = (3.14 * WR) / 1000.0
+
 
 
 
@@ -51,7 +51,7 @@ t.start()
 kmm_avg = 0
 
 while True:
-	while cs < 1/ST:
+	while cs < 5/ST:
 		time.sleep (ST)
 		v = wiringpi.digitalRead(17)
 		cs += 1
@@ -60,7 +60,7 @@ while True:
 			rounds += 1
 		pstate = int (v)
 
-	rpm = (rpm + (rounds * 60.0)) / 2.0
+	rpm = (rpm + (rounds / 5.0 * 60.0)) / 2.0
 	kmm = rpm * CF
 	kmh = rpm * CF * 60
 	kmm_avg = (kmm_avg + kmm) / 2.0
