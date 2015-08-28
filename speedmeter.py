@@ -28,6 +28,7 @@ rounds = 0
 rpm = 0
 kmm = 0
 kmh = 0
+kmm_avg = 0
 
 pstate = 0
 
@@ -37,7 +38,7 @@ class GetHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
 		self.send_response(200)
 		self.end_headers()
-		self.wfile.write(str (kmh))
+		self.wfile.write(str (kmm_avg))
 		return
 
 def serveJob ():
@@ -48,7 +49,6 @@ def serveJob ():
 t = Thread(target=serveJob, args=())
 t.start()
 
-kmm_avg = 0
 
 while True:
 	while cs < 5/ST:
