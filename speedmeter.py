@@ -48,7 +48,7 @@ def serveJob ():
 t = Thread(target=serveJob, args=())
 t.start()
 
-kmh_avg = 0
+kmm_avg = 0
 
 while True:
 	while cs < 1/ST:
@@ -63,12 +63,12 @@ while True:
 	rpm = (rpm + (rounds * 60.0)) / 2.0
 	kmm = rpm * CF
 	kmh = rpm * CF * 60
-	kmh_avg = (kmh_avg + kmh) / 2.0
-	print 'RPS:',rounds,'RPM:',rpm,'km/m:',kmm,'km/h:',kmh,'km/h avg',kmh_avg
+	kmm_avg = (kmm_avg + kmm) / 2.0
+	print 'RPS:',rounds,'RPM:',rpm,'km/m:',kmm,'km/h:',kmh,'km/h avg',kmm_avg
 
 	rounds = 0
 	cs = 0
 
 	f = open ('v.txt', 'w')
-	f.write (str (kmh_avg))
+	f.write (str (kmm_avg))
 	f.close ()
