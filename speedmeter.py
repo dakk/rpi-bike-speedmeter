@@ -51,7 +51,7 @@ t.start()
 
 
 while True:
-	while cs < 5/ST:
+	while cs < 3/ST:
 		time.sleep (ST)
 		v = wiringpi.digitalRead(17)
 		cs += 1
@@ -60,10 +60,10 @@ while True:
 			rounds += 1
 		pstate = int (v)
 
-	rpm = (rpm + (rounds / 5.0 * 60.0)) / 2.0
+	rpm = (rpm + (rounds / 3.0 * 60.0)) / 2.0
 	kmm = rpm * CF
 	kmh = rpm * CF * 60
-	kmm_avg = (kmm_avg + kmm) / 2.0
+	kmm_avg = (kmm_avg + kmm * 0.3) / 1.3
 	print 'RPS:',rounds,'RPM:',rpm,'km/m:',kmm,'km/h:',kmh,'km/h avg',kmm_avg
 
 	rounds = 0
