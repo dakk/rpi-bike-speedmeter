@@ -64,7 +64,7 @@ while True:
 	kmm = rpm * CF
 	kmh = rpm * CF * 60
 	kmh_avg = (kmh_avg + kmh) / 2.0
-	print 'RPS:',rounds,'RPM:',rpm,'km/m:',kmm,'km/h:',kmh
+	print 'RPS:',rounds,'RPM:',rpm,'km/m:',kmm,'km/h:',kmh,'km/h avg',kmh_avg
 
 	rounds = 0
 	cs = 0
